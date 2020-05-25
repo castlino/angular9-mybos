@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "a7-front"
+    }
+  },
+  "defaultProject": "a7-front",
+  "cli": {
+    "analytics": false
+  }
 }
