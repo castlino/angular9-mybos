@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 //import { JwtHelperService } from '../services/jwt-helper.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import {NgbDateStruct, NgbCalendar, NgbDatepicker} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,16 @@ export class HomeComponent implements OnInit {
   accessToken: any;
   accessTokenDetails: any;
   loading: boolean;
+  
+  model: NgbDateStruct;
+  date: {year: number, month: number};
+  @ViewChild('dp') dp: NgbDatepicker;
 
   constructor(
     //jwtHelper: JwtHelperService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private calendar: NgbCalendar
   ) {
     this.accessToken = localStorage.getItem('access_token');
     // this.accessTokenDetails = {
@@ -41,6 +47,10 @@ export class HomeComponent implements OnInit {
         localStorage.removeItem('access_token');
         this.router.navigate(['/login']);
       });
+  }
+  
+  selectToday() {
+    this.model = this.calendar.getToday();
   }
 
 }
