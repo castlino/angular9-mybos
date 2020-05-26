@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -9,8 +10,8 @@ export class AuthService {
   // Variables
     // authUrl = 'http://localhost:8000/oauth/token';
     // apiUrl = 'http://localhost:8000/api';
-    authUrl = 'http://mybos.test/oauth/token';
-    apiUrl = 'http://mybos.test/api';
+    authUrl = 'http://lara7-mybos.test/oauth/token';
+    apiUrl = 'http://lara7-mybos.test/api';
     options: any;
     /**
      * Constructor
@@ -36,7 +37,7 @@ export class AuthService {
       return this.http.post(this.authUrl, {
         grant_type: 'password',
         client_id: '2',
-        client_secret: 'igEmGbHkPdVSV0HExjEyCR7anCJOahl1enIMNb2z',
+        client_secret: `${environment.passportOauthSecretKey}`,
         username: e,
         email: e,
         password: p,
