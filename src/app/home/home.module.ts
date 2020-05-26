@@ -7,6 +7,9 @@ import { AuthGuardService } from '../services/auth-guard.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
+import { ChartsModule } from 'ng2-charts';
+import { PieChartComponent } from '../pie-chart/pie-chart.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -16,12 +19,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, PieChartComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     NgbModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ]
 })
 export class HomeModule { }
