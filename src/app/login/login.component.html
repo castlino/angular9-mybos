@@ -1,0 +1,35 @@
+<div class="component-login container">
+    <div class="row">
+        <div class="col d-flex flex-row justify-content-center align-content-center pt-5 pb-5">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form [formGroup]="form" (submit)="login()">
+                        <img class="logo mb-4" src="https://data.mybos.com/static/mybos-login-logo.png" alt="">
+                        <div class="row" *ngIf="errors">
+                            <div class="col">
+                                <div class="alert alert-danger">
+                                    <strong>Oops!</strong> You have entered invalid credentials
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="email" id="email" formControlName="email" class="form-control" placeholder="email/username" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="password" formControlName="password" class="form-control" placeholder="password"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex flex-row justify-content-center align-content-center">
+                                <button type="submit" class="btn submit col-12" [disabled]="loading"><i _ngcontent-mdq-c2="" class="icon"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

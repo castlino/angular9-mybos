@@ -7,8 +7,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AuthService {
   // Variables
-    authUrl = 'http://localhost:8000/oauth/token';
-    apiUrl = 'http://localhost:8000/api';
+    // authUrl = 'http://localhost:8000/oauth/token';
+    // apiUrl = 'http://localhost:8000/api';
+    authUrl = 'http://mybos.test/oauth/token';
+    apiUrl = 'http://mybos.test/api';
     options: any;
     /**
      * Constructor
@@ -36,6 +38,7 @@ export class AuthService {
         client_id: '2',
         client_secret: 'igEmGbHkPdVSV0HExjEyCR7anCJOahl1enIMNb2z',
         username: e,
+        email: e,
         password: p,
         scope: ''
       }, this.options);
@@ -45,7 +48,9 @@ export class AuthService {
      * Revoke the authenticated user token
      */
     logout() {
-      this.options.headers.Authorization = 'Bearer ' + localStorage.getItem('access_token');
+      //console.log(localStorage.getItem('access_token'));
+      //this.options.headers.Authorization = 'Bearer ' + localStorage.getItem('access_token');
+      this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
       return this.http.get(this.apiUrl + '/token/revoke', this.options);
     }
     
