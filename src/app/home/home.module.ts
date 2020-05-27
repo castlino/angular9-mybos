@@ -9,17 +9,23 @@ import { FormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from '../pie-chart/pie-chart.component';
+import { CasesComponent } from './cases/cases.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthGuardService ],
+    children: [
+      { path: 'cases', component: CasesComponent },
+      { path: 'dashboard', component: DashboardComponent }
+    ]
   }
 ];
 
 @NgModule({
-  declarations: [HomeComponent, PieChartComponent],
+  declarations: [HomeComponent, PieChartComponent, CasesComponent, DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

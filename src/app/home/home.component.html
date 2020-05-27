@@ -30,13 +30,13 @@
     <div class="sidebar" ng-class="{'has-alert':hasAlert==true}">
       	<ul>
       		<li ui-sref="bm.dashboard" ui-sref-active="active" href="#!/" class="active">
-      			<a title="Dashboard" href="javascript:void(0)">
+      			<a title="Dashboard" routerLink="/dashboard">
       				<i class="icon dashboard sb"></i>
       				<span class="d-none d-xl-inline-block ng-isolate-scope" mb-terminology="dashboard">DASHBOARD</span>
       			</a>
       		</li>
       		<li ui-sref-active="active" ui-sref="bm.cases.list" ng-if="isFeatureEnable(FEATURES.CASES)" class="ng-scope" href="#!/cases/list" style="">
-      			<a title="Cases" href="javascript:void(0)">
+      			<a title="Cases" routerLink="/cases">
       				<i class="icon case sb"></i>
       				<span class="d-none d-xl-inline-block ng-isolate-scope" mb-terminology="cases">CASES</span>
       			</a>
@@ -46,33 +46,10 @@
     <div class="page-container">
       <div class="app-page">
         <div class="title" mb-lang="">Dashboard</div>
-          <div class="body container-fluid dashboard-page">
-                <div class="row pt-5 pb-5">
-                    <div class="col-md-4">
-                        <div class="card bg-light">
-                            <div class="card-header">
-                                <h6>JWT generated</h6>
-                                <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-                                <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-                                <pre>Model: {{ model | json }}</pre>
-                            </div>
-                            <div class="card-body">
-                                <pre>{{accessToken | json}}</pre>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-light">
-                            <div class="card-header">
-                                <h6>Authenticated user's details</h6>
-                                <app-pie-chart></app-pie-chart>
-                            </div>
-                            <div class="card-body">
-                                <pre>{{accessTokenDetails | json}}</pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="body container-fluid dashboard-page">
+          
+                <router-outlet></router-outlet>
+                
         </div> <!-- /.body container-fluid dashboard-page -->
       </div> <!-- /.app-page -->
     </div> <!-- /.page-container -->
@@ -80,6 +57,23 @@
     <div class="row">
         <!-- <div class="col d-flex flex-row justify-content-center align-content-center">
             <button class="btn btn-danger" >Logout</button>
+        </div> -->
+        
+        <!-- <div class="row pt-5 pb-5">
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6>Access token</h6>
+                        <pre>{{accessToken | json}}</pre>
+                    </div>
+                </div>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6>Authenticated user's details</h6>
+                        <pre>{{accessTokenDetails | json}}</pre>
+                    </div>
+                </div>
+            </div>
         </div> -->
     </div>
 </div>

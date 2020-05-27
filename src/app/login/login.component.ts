@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', res.access_token);
         this.loading = false;
         // Navigate to home page
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       }, (err: any) => {
         // This error can be internal or invalid credentials
         // You need to customize this based on the error.status code

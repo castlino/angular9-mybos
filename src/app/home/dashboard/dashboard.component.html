@@ -1,0 +1,23 @@
+<p>dashboard works!</p>
+<div class="body container-fluid dashboard-page">
+        <div class="row pt-5 pb-5">
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h6>JWT generated</h6>
+                        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                        <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+                        <pre>Model: {{ model | json }}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h6>Chart</h6>
+                        <app-pie-chart></app-pie-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div> <!-- /.body container-fluid dashboard-page -->

@@ -41,11 +41,11 @@ export class HomeComponent implements OnInit {
    */
   logout(): void {
     this.loading = true;
+    localStorage.removeItem('access_token');
     this.authService.logout()
       .subscribe(() => {
         this.loading = false;
-        localStorage.removeItem('access_token');
-        this.router.navigate(['/login']);
+        this.router.navigate(['login']);
       });
   }
   
