@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-body.dark-bg{
-  background-color: #212529;
+
+body{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  
+  &.dark-bg{
+    background-color: #336799;
+  }
 }
 
 /* Importing Bootstrap SCSS file. */

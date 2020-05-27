@@ -1,33 +1,85 @@
-<div class="container">
-    <div class="row pt-5 pb-5">
-        <div class="col-md-6">
-            <div class="card bg-light">
-                <div class="card-header">
-                    <h6>JWT generated</h6>
-                    <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-                    <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-                    <pre>Model: {{ model | json }}</pre>
-                </div>
-                <div class="card-body">
-                    <pre>{{accessToken | json}}</pre>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card bg-light">
-                <div class="card-header">
-                    <h6>Authenticated user's details</h6>
-                    <app-pie-chart></app-pie-chart>
-                </div>
-                <div class="card-body">
-                    <pre>{{accessTokenDetails | json}}</pre>
-                </div>
-            </div>
-        </div>
+<div class="header-container">
+  <div class="container-fluid top-nav">
+    
+    <div class="logo float-left d-sm-none d-md-block">
+        <img ng-src="https://data.mybos.com/9/2020-04-04/2HHYN46AYA.png" src="https://data.mybos.com/9/2020-04-04/2HHYN46AYA.png">
     </div>
-    <div class="row">
-        <div class="col d-flex flex-row justify-content-center align-content-center">
-            <button class="btn btn-danger" (click)="logout()" [disabled]="loading">Logout</button>
+    
+    <div class="header-feature float-left">
+        <ul class="list-inline am-slide-left">
+            <li><a class="icon header-menu" href="javascript:void(0)"></a></li>
+        </ul>
+    </div>
+    
+    <div class="header-cta user-action float-right">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Demo Manager
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Change Password</a>
+          <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
         </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="main">
+    <div class="sidebar" ng-class="{'has-alert':hasAlert==true}">
+      	<ul>
+      		<li ui-sref="bm.dashboard" ui-sref-active="active" href="#!/" class="active">
+      			<a title="Dashboard" href="javascript:void(0)">
+      				<i class="icon dashboard sb"></i>
+      				<span class="d-none d-xl-inline-block ng-isolate-scope" mb-terminology="dashboard">DASHBOARD</span>
+      			</a>
+      		</li>
+      		<li ui-sref-active="active" ui-sref="bm.cases.list" ng-if="isFeatureEnable(FEATURES.CASES)" class="ng-scope" href="#!/cases/list" style="">
+      			<a title="Cases" href="javascript:void(0)">
+      				<i class="icon case sb"></i>
+      				<span class="d-none d-xl-inline-block ng-isolate-scope" mb-terminology="cases">CASES</span>
+      			</a>
+      		</li>
+      	</ul>
+    </div>
+    <div class="page-container">
+      <div class="app-page">
+        <div class="title" mb-lang="">Dashboard</div>
+          <div class="body container-fluid dashboard-page">
+                <div class="row pt-5 pb-5">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h6>JWT generated</h6>
+                                <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                                <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+                                <pre>Model: {{ model | json }}</pre>
+                            </div>
+                            <div class="card-body">
+                                <pre>{{accessToken | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h6>Authenticated user's details</h6>
+                                <app-pie-chart></app-pie-chart>
+                            </div>
+                            <div class="card-body">
+                                <pre>{{accessTokenDetails | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div> <!-- /.body container-fluid dashboard-page -->
+      </div> <!-- /.app-page -->
+    </div> <!-- /.page-container -->
+    
+    <div class="row">
+        <!-- <div class="col d-flex flex-row justify-content-center align-content-center">
+            <button class="btn btn-danger" >Logout</button>
+        </div> -->
     </div>
 </div>
