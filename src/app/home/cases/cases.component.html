@@ -12,17 +12,9 @@
             
             <div class="table-head">control later here...</div>
             <div class="table-body">
-              <div class="table-loader ng-hide" *ngIf="loading" ng-hide="error">
-                  <!-- <div class="loader">
-                      <div class="loading-bars">
-                          <div class="bar"></div>
-                          <div class="bar"></div>
-                          <div class="bar"></div>
-                          <div class="bar"></div>
-                          <div class="bar"></div>
-                      </div>
-                  </div> -->
-                  <p class="ng-binding">Loading Cases, please wait</p>
+              <div class="table-loader ng-hide"  *ngIf="loading">
+                  <div class="loader-gif"></div>
+                  <p class="loader-statement">Loading Cases, please wait</p>
               </div>
               <table *ngIf="!loading" class="" style="">
                 <thead>

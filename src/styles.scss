@@ -122,6 +122,15 @@ body {
       * {
         
       }
+      .loader-gif {
+        height: 100px;
+        background-image: url(assets/charts-loader-2x.gif);
+        background-position: center;
+        background-size: cover;
+      }
+      .loader-statement {
+        text-align: center;
+      }
       .loader {
         margin: 0 auto;
         vertical-align: middle;

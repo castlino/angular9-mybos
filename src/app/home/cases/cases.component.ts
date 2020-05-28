@@ -30,7 +30,7 @@ export class CasesComponent implements OnInit {
   getCases(): void {
     this.loading = true;
     this.caseService.getCases()
-        .pipe( delay(1000) )
+        //.pipe( delay(1000) )  // test loader display by adding delay.
         .subscribe(
           cases => {
             this.cases = cases;
