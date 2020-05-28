@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Case } from '../model/case';
+import { PaginatedCases } from '../model/paginated-cases';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -24,7 +25,34 @@ export class CasesService {
         'Content-Type': 'application/json'
       }),
       params: new HttpParams({
-        fromObject: {count: '3'}
+        fromObject: {
+          count: '4',
+          page: '2',
+        }
+      })
+      
+    };
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get<Case[]>(this.caseUrl, this.options)
+      .pipe(
+        tap(_ => console.log('fetched cases...')),
+        catchError(this.handleError<any>('getCases', []))
+        
+      );
+  }
+  
+  getPaginatedCases(count: number, page: number): Observable<PaginatedCases> {
+    // Pass authentication token. Ref: https://www.tektutorialshub.com/angular/angular-httpheaders/
+    this.options = {
+      headers: new HttpHeaders({
+        //Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }),
+      params: new HttpParams({
+        fromObject: {
+          count: count.toString(),
+          page: page.toString(),
+        }
       })
       
     };
