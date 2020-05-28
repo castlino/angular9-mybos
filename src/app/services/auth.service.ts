@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -10,8 +10,8 @@ export class AuthService {
   // Variables
     // authUrl = 'http://localhost:8000/oauth/token';
     // apiUrl = 'http://localhost:8000/api';
-    authUrl = 'http://lara7-mybos.test/oauth/token';
-    apiUrl = 'http://lara7-mybos.test/api';
+    authUrl = `${environment.laravelApiUrl}/oauth/token`;
+    apiUrl = `${environment.laravelApiUrl}/api`;
     options: any;
     /**
      * Constructor

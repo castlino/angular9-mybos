@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  passportOauthSecretKey: '5jWUMrGGGeSUZiYPIykc3gjFd0ZPCfeA4PVJRA9O'
+  passportOauthSecretKey: '5jWUMrGGGeSUZiYPIykc3gjFd0ZPCfeA4PVJRA9O',
+  laravelApiUrl: 'http://lara7-mybos.test'
 };
 
 /*

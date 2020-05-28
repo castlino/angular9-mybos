@@ -3,6 +3,7 @@ import { Case } from '../model/case';
 import { PaginatedCases } from '../model/paginated-cases';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { catchError, map, tap } from 'rxjs/operators';
 
 
@@ -10,7 +11,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CasesService {
-  caseUrl = 'http://lara7-mybos.test/api/cases/paginated';
+  caseUrl = `${environment.laravelApiUrl}/api/cases/paginated`;
   options: any;
 
   constructor(
