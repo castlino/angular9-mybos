@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Case } from '../model/case';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CasesService {
-  caseUrl = 'http://lara7-mybos.test/api/cases';
+  caseUrl = 'http://lara7-mybos.test/api/cases/paginated';
   options: any;
 
   constructor(
@@ -17,12 +17,16 @@ export class CasesService {
   ) { }
   
   getCases(): Observable<Case[]> {
-    // Pass authentication token.
+    // Pass authentication token. Ref: https://www.tektutorialshub.com/angular/angular-httpheaders/
     this.options = {
       headers: new HttpHeaders({
-        Accept: 'application/json',
+        //Accept: 'application/json',
         'Content-Type': 'application/json'
+      }),
+      params: new HttpParams({
+        fromObject: {count: '3'}
       })
+      
     };
     this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     return this.http.get<Case[]>(this.caseUrl, this.options)
