@@ -113,6 +113,50 @@ body {
         }
       }
     }
+    .table-loader {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #fff;
+      z-index: 1;
+      * {
+        
+      }
+      .loader {
+        margin: 0 auto;
+        vertical-align: middle;
+        opacity: 1;
+        text-align: center;
+        width: 100%;
+        height: 70px;
+        line-height: 70px;
+        .loading-bars {
+          text-align: center;
+          .bar {
+            height: 20px;
+            width: 10px;
+            background: #5faee3;
+            display: inline-block;
+            animation: pulse 1.2s infinite ease-out;
+            &:nth-of-type(0n+1) {
+              animation-delay: 0;
+            }
+            &:nth-of-type(0n+2) {
+              animation-delay: .2s;
+            }
+            &:nth-of-type(0n+3) {
+              animation-delay: .4s;
+            }
+            &:nth-of-type(0n+4) {
+              animation-delay: .6s;
+            }
+            &:nth-of-type(0n+5) {
+              animation-delay: .8s;
+            }
+          }
+        }
+      }
+    }
   }
   
 } //Body
