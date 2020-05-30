@@ -9,8 +9,12 @@ import { FormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from '../pie-chart/pie-chart.component';
+import { DoughnutChartComponent } from '../doughnut-chart/doughnut-chart.component';
 import { CasesComponent } from './cases/cases.component';
+import { CaseViewComponent } from './case-view/case-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { TimeDisplayComponent } from '../shared/time-display/time-display.component';
 
 const routes: Routes = [
   {
@@ -19,13 +23,14 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ],
     children: [
       { path: 'cases', component: CasesComponent },
+      { path: 'case/view/:id', component: CaseViewComponent },
       { path: 'dashboard', component: DashboardComponent }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [HomeComponent, PieChartComponent, CasesComponent, DashboardComponent],
+  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

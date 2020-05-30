@@ -25,7 +25,19 @@
         background-position: -423px -33px;
       }
     }
-  } //.header-feature
+  } 
+  
+  .time-weather {
+    margin-left: 430px;
+    min-width: 200px;
+    text-align: center;
+    height: 57px;
+    line-height: 57px;
+    font-size: 13px;
+    @media (max-width: 1366px){
+      margin-left: 110px;
+    }
+  }
   
   .header-cta {
     .dropdown-toggle {

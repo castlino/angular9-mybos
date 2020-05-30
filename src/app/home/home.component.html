@@ -11,16 +11,20 @@
         </ul>
     </div>
     
+    <div class="time-weather float-left d-none d-lg-inline-block">
+        <app-time-display></app-time-display>
+    </div>
+    
     <div class="header-cta user-action float-right">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Demo Manager
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Change Password</a>
-          <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Demo Manager
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Change Password</a>
+            <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+          </div>
         </div>
-      </div>
     </div>
     
   </div>

@@ -1,0 +1,103 @@
+<div class="block block-panel">
+  
+  <div class="block-heading"><i class="icon icon-case"></i> <span mb-lang=""> Case View ( {{ id }} ) </span></div>
+  
+  <div class="block-body printable">
+    <div class="row">
+      
+      <div class="col-md-8">
+        <form class="form-horizontal ng-pristine ng-valid" *ngIf="case">
+							<fieldset>
+  								<legend>
+                    <span mb-lang="">Case Information</span>  <i class="icon icon-start grey"></i>
+                    <div class="clearfix"></div>
+                  </legend>
+                  <div class="row">
+                    
+                    <div class="col-sm-8">
+                      <div class="row form-group">
+      									<div class="col-sm-3"><label>Case Number</label></div>
+      									<div class="col-sm-3">{{ case.case_number }}</div>
+      								</div>
+                      
+                      <div class="row form-group">
+      									<div class="col-md-3"><label>Case Type</label></div>
+      									<div class="col-md-5">{{ case.type }}</div>
+      								</div>
+                      
+                      <div class="row form-group">
+      									<div class="col-md-3"><label>Added</label></div>
+      									<div class="col-md-5">{{ case.added_date }}</div>
+      								</div>
+                      
+                      <div class="row form-group">
+      									<div class="col-md-3"><label>Due Date</label></div>
+      									<div class="col-md-5">{{ case.due_date }}</div>
+      								</div>
+                      
+                      <div class="row form-group">
+      									<div class="col-md-3"><label>Priority</label></div>
+      									<div class="col-md-5">{{ case.priority }}</div>
+      								</div>
+                    </div> <!-- /col-sm-8 -->
+                    
+                    <div class="col-sm-4">
+                      <div class="row form-group">
+      									<div class="case-view-status">
+      										<div class="status-positions">
+      											<label class="">
+      												Status
+      												<i class="fa fa-pulse fa-spinner ng-hide" *ngIf="updatingStatus"></i>
+      												<i class="fa fa-check color-blue-light ng-hide" *ngIf="updatedStatus"></i>
+      											</label>
+      											<select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="status" [(ngModel)]="caseStatus" (change)="onCaseStatusChanged()">
+                              <option *ngFor="let caseStatus of caseStatusOptions" value="{{ caseStatus }}">{{ caseStatus }}</option>
+                            </select>
+      										</div>
+      										<div class="complete-positions ng-hide" ng-show="caseData.status == 2">
+      											<label class="" mb-lang="">Date Completed:</label>
+      											<p class="color-grey ng-binding">--date here--</p>
+      										</div>
+      									</div>
+      								</div>
+                    </div>
+                    
+                  </div> <!-- /row -->
+                  
+              </fieldset>
+              <fieldset>
+  								<legend>
+                    <span mb-lang="">Job Information</span>
+                    <div class="clearfix"></div>
+                  </legend>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <div class="row form-group">
+      									<div class="col-sm-3"><label>Subject</label></div>
+      									<div class="col-sm-3">{{ case.subject }}</div>
+      								</div>
+                      
+                      <div class="row form-group">
+      									<div class="col-md-3"><label>Description</label></div>
+      									<div class="col-md-5">{{ case.description }}</div>
+      								</div>
+                    </div> <!-- /col-sm-8 -->
+                  </div> <!-- /row -->
+                  
+              </fieldset>
+        </form>
+                  
+                  
+                  
+        
+      </div>
+      
+      <div class="col-md-4">
+        
+      </div>
+      
+      
+    </div>
+  </div>
+  
+</div>

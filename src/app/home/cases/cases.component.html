@@ -27,7 +27,7 @@
                   </th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let case of cases" >
+                  <tr *ngFor="let case of cases" routerLink="/case/view/{{ case.id }}" >
                     <td>{{case.case_number}}</td>
                     <td>{{case.added_date | date:'MM/d/y'}}</td>
                     <td>{{case.subject}}</td>
@@ -39,10 +39,10 @@
                 </tbody>
               </table>
             </div> <!-- /table-body -->
-            <div class="table-foot ng-scope mt-4" ng-if="source.noPaging !== true">
+            <div class="table-foot ng-scope mt-4">
               <div class="table-showing float-left">
                   Show 
-                  <select class="table-size ng-pristine ng-valid ng-not-empty ng-touched" [(ngModel)]="pageCount" (change)="onCountChange()" style="">
+                  <select class="table-size ng-pristine ng-valid ng-not-empty ng-touched" [(ngModel)]="pageCount" (change)="onCountChange()">
                       <option *ngFor="let pageCount of pageCountOptions" value="{{ pageCount }}">{{ pageCount }}</option>
                   </select>
                   entries

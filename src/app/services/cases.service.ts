@@ -42,6 +42,45 @@ export class CasesService {
       );
   }
   
+  getCase(id: number): Observable<Case> {
+    this.options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      params: new HttpParams({
+        fromObject: { id: id.toString() }
+      })
+    };
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get<Case>(`${environment.laravelApiUrl}/api/case/get-by-id`, this.options)
+      .pipe(
+        tap(_ => console.log('fetched cases...')),
+        catchError(this.handleError<any>('getCase', []))
+      );
+  }
+  
+  setCaseStatus(id: number, status: string): Observable<string> {
+    this.options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }),
+      params: new HttpParams({
+        fromObject: { id: id.toString(), status: status }
+      })
+    };
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.post<any>(
+      `${environment.laravelApiUrl}/api/case/set-status`,
+      { id: id.toString(), status: status },
+      this.options
+    )
+      .pipe(
+        tap(_ => console.log('set case status...')),
+        catchError(this.handleError<any>('setCaseStatus', []))
+      );
+  }  
+  
   getPaginatedCases(count: number, page: number): Observable<PaginatedCases> {
     // Pass authentication token. Ref: https://www.tektutorialshub.com/angular/angular-httpheaders/
     this.options = {

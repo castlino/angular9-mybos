@@ -36,6 +36,13 @@ body {
             background-position: -55px -179px;
         }
       }
+      &.icon-start {
+        width: 17px;
+        height: 15px;
+        &.grey {
+          background-position: -343px -232px;
+        }
+      }
   }
   
   
@@ -181,6 +188,76 @@ body {
       }
     }
   } //mb-data-table
+  
+  .calendar {
+    &.block {      
+      background-color: #2ca7c1;
+      color: #fff;
+      .block-heading {
+        color: #fff;
+        font-size: 24px;
+        padding: 15px;
+      }
+      ngb-datepicker {
+        border: none;
+        
+        .ngb-dp-header, .ngb-dp-month-name {
+          background-color: #2ca7c1;
+        }
+        .ngb-dp-week {
+            .ngb-dp-day {
+              &:focus {
+                outline: none;
+              }
+              .btn-light {
+                color: #FFF;
+                &.bg-primary{
+                  background-color: #84cbf0 !important;
+                  border-radius: 0;
+                }
+              }
+              .text-muted {
+                color: #FFF !important;
+              }
+            }
+        }
+        .ngb-dp-week.ngb-dp-weekdays {
+          background-color: #17869d !important;
+          border: none;
+          .ngb-dp-weekday {
+            color: #FFF;
+          }
+        }
+        .ngb-dp-month {
+          width: 100%;
+          .ngb-dp-day, .ngb-dp-week-number, .ngb-dp-weekday {
+            width: 5rem;
+            height: 2rem;
+          }
+        }
+      }  //ngb-datepicker
+    }
+  } //.block.calendar
+  
+  
+  legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 18px;
+    font-size: 17px;
+    line-height: inherit;
+    color: #5faee3;
+    border: 0;
+    border-bottom: 1px solid #5faee3;
+  }
+  
+  form, .form {
+    label {
+      color: #5faee3;
+      font-weight: 500;
+    }
+  }
   
 } //Body
 
