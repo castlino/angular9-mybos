@@ -100,7 +100,7 @@ export class CasesService {
       );
   }
   
-  getPaginatedCases(count: number, page: number): Observable<PaginatedCases> {
+  getPaginatedCases(count: number, page: number, keywords: string): Observable<PaginatedCases> {
     // Pass authentication token. Ref: https://www.tektutorialshub.com/angular/angular-httpheaders/
     this.options = {
       headers: new HttpHeaders({
@@ -111,6 +111,7 @@ export class CasesService {
         fromObject: {
           count: count.toString(),
           page: page.toString(),
+          keywords: keywords,
         }
       })
       

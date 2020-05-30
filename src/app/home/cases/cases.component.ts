@@ -25,6 +25,8 @@ export class CasesComponent implements OnInit {
   countTotal: number;
   pageCountMax: number;
   pageCountOptions: string[];
+  
+  searchString: string;
 
   constructor(
     private router: Router,
@@ -35,6 +37,7 @@ export class CasesComponent implements OnInit {
     //this.getCases();
     this.pageCount = 2;
     this.pageNumber = 1;
+    this.searchString = '';
     this.getPaginatedCases();
     
     this.tableHeading = ['#', 'Added', 'Subject', 'Type', 'Status', 'Assigned Contractors', 'Priority'];
@@ -57,7 +60,7 @@ export class CasesComponent implements OnInit {
   
   getPaginatedCases(): void {
     this.loading = true;
-    this.caseService.getPaginatedCases(this.pageCount, this.pageNumber)
+    this.caseService.getPaginatedCases(this.pageCount, this.pageNumber, this.searchString)
         //.pipe( delay(1000) )  // test loader display by adding delay.
         .subscribe(
           paginatedCases => {
@@ -79,6 +82,12 @@ export class CasesComponent implements OnInit {
   
   public onChangePageNumber(pageNumber: number) {
     this.pageNumber = pageNumber;
+    this.getPaginatedCases();
+  }
+  
+  public onSearchCases() {
+    console.log('on search...' + this.searchString);
+    this.pageNumber = 1;
     this.getPaginatedCases();
   }
   
