@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../services/auth-guard.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from '../pie-chart/pie-chart.component';
@@ -15,6 +15,7 @@ import { CaseViewComponent } from './case-view/case-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { TimeDisplayComponent } from '../shared/time-display/time-display.component';
+import { CaseNewComponent } from './case-new/case-new.component';
 
 const routes: Routes = [
   {
@@ -24,18 +25,20 @@ const routes: Routes = [
     children: [
       { path: 'cases', component: CasesComponent },
       { path: 'case/view/:id', component: CaseViewComponent },
+      { path: 'case/new', component: CaseNewComponent },
       { path: 'dashboard', component: DashboardComponent }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent],
+  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent, CaseNewComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     ChartsModule
   ]
 })

@@ -1,0 +1,35 @@
+<div class="block block-panel">
+  
+  <div class="block-heading"><i class="icon icon-case"></i> <span> Create Case</span></div>
+  
+  <div class="block-body printable">
+    <div class="row">
+      
+      <div class="col-md-8">
+        <form [formGroup]="newCaseForm">
+          <fieldset>
+              <legend>
+                <span mb-lang="">Case Information</span>  <i class="icon icon-start grey"></i>
+                <div class="clearfix"></div>
+              </legend>
+              
+              <div class="row form-group">
+                <div class="col-sm-3"><label>Case Number</label></div>
+                <div class="col-sm-3">
+                  <input type="text" formControlName="case_number">
+                </div>
+              </div>
+              
+          </fieldset>
+          <button class="button" type="submit">Submit</button>
+        </form>
+      </div>
+      
+      <div class="col-md-4">
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
