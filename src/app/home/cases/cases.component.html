@@ -10,7 +10,15 @@
         <div class="case-content">
           <div class="mb-data-table ng-isolate-scope" source="caseTable">
             
-            <div class="table-head">controls later here...</div>
+            <div class="table-head">
+              <div class="table-action pull-right ng-scope">
+                <button type="button" class="btn btn-mybos-new " routerLink="/case/new">
+                  <span class="ng-scope">New</span>
+                </button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            
             <div class="table-body">
               <div class="table-loader ng-hide"  *ngIf="loading">
                   <div class="loader-gif"></div>

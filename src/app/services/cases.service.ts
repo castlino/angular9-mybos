@@ -79,7 +79,26 @@ export class CasesService {
         tap(_ => console.log('set case status...')),
         catchError(this.handleError<any>('setCaseStatus', []))
       );
-  }  
+  }
+  
+  createCase(data: any): Observable<any> {
+    this.options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      })
+    };
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.post<any>(
+      `${environment.laravelApiUrl}/api/case/create-new`,
+      data,
+      this.options
+    )
+      .pipe(
+        tap(_ => console.log('create new case status...')),
+        catchError(this.handleError<any>('createCase', []))
+      );
+  }
   
   getPaginatedCases(count: number, page: number): Observable<PaginatedCases> {
     // Pass authentication token. Ref: https://www.tektutorialshub.com/angular/angular-httpheaders/
