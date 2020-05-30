@@ -1,8 +1,27 @@
-<div class="chart-wrapper">
-    <canvas baseChart 
-    [data]="doughnutChartData"
-    [labels]="doughnutChartLabels"
-    [chartType]="doughnutChartType"
-    [legend]=false>
-  </canvas>
+<div class="block doughnut-chart">
+  
+  <div class="block-heading" mb-lang="">Cases Graph</div>
+
+  <div class="date-range">
+  	<select class="ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" [(ngModel)]="timeFrame" (change)="onTimeFrameChange()">
+  		<option value="today" mb-lang="" selected="selected">Today</option>
+  		<option value="-1 week" mb-lang="">Weekly</option>
+  		<option value="-1 month" mb-lang="">Monthly</option>
+  		<option value="-3 months" mb-lang="">3 Month</option>
+  		<option value="-6 months" mb-lang="">6 Month</option>
+  		<option value="-12 months" mb-lang="">12 Month</option>
+  	</select>
+  </div>
+
+  <div class="block-body">
+    <div class="chart-wrapper">
+        <canvas baseChart 
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [legend]=false>
+      </canvas>
+    </div>
+  </div>
+  
 </div>

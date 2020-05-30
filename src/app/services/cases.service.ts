@@ -125,6 +125,25 @@ export class CasesService {
       );
   }
   
+  getCaseTypeStats(period: string): Observable<any> {
+    this.options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      params: new HttpParams({
+        fromObject: { period: period }
+      })
+    };
+    
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get<any>(`${environment.laravelApiUrl}/api/cases/get-type-stats`, this.options)
+      .pipe(
+        tap(_ => console.log('fetched case type stats...')),
+        catchError(this.handleError<any>('getCaseTypeStats', []))
+        
+      );
+  }
+  
   /**
    * Handle Http operation that failed.
    * Let the app continue.

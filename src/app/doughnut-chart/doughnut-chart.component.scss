@@ -1,0 +1,19 @@
+
+.block {
+    background-color: #fff;
+    padding: 15px;
+    color: #666;
+    position: relative;
+    .block-heading {
+        font-size: 20px;
+        color: #5faee3;
+        position: relative;
+    }
+}
+
+.date-range {
+  padding: 5px 8px;
+  position: absolute;
+  top: 15px;
+  left: 200px;
+}

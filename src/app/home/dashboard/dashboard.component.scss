@@ -9,4 +9,13 @@
       width: 5rem;
       height: 2rem;
     }
+    .block {
+      max-height: 365px;
+      min-height: 365px;
+      overflow: hidden;
+      box-shadow: 2px 2px 5px -1px;
+    }
+    .block-white-bg {
+      background-color: #FFFFFF;
+    }
 }

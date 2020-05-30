@@ -57,6 +57,16 @@ export class CasesComponent implements OnInit {
     
   }
   
+  getCaseTypeStats(): void {
+    this.caseService.getCaseTypeStats('-2 month')
+        //.pipe( delay(1000) )  // test loader display by adding delay.
+        .subscribe(
+          caseTypeStats => {
+            console.log(caseTypeStats);
+          }
+    );
+    
+  }
   
   getPaginatedCases(): void {
     this.loading = true;
@@ -73,6 +83,10 @@ export class CasesComponent implements OnInit {
             this.loading = false;
           }
     );
+  }
+
+  public onGetStats() {
+    this.getCaseTypeStats();
   }
   
   public onCountChange() {
@@ -92,7 +106,6 @@ export class CasesComponent implements OnInit {
   }
   
   numberToCollection(n: number): any[] {
-    console.log(n);
     return Array(n);
   }
 
