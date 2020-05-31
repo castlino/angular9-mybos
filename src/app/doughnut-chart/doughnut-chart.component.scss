@@ -13,7 +13,7 @@
 
 .date-range {
   padding: 5px 8px;
-  position: absolute;
-  top: 15px;
-  left: 200px;
+  select {
+    float: right;
+  }
 }
