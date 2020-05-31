@@ -1,0 +1,16 @@
+
+<div class="block summary building-summary">
+  
+  <div class="block-heading" mb-lang="">Building Summary</div>
+	<div class="block-control"></div>
+  
+	<div class="block-body">
+    <div class="app-content-loading ng-hide" ng-show="requireLoading"></div>
+    <ul class="list-unstyled">
+      <li class="ng-scope" *ngFor="let item of allItems">
+        <span>{{ item.label }}</span> <span class="ng-binding float-right">{{ item.count }}</span>
+      </li>
+    </ul>
+  </div>
+  
+</div>

@@ -99,7 +99,22 @@ body {
         border-radius: 3px;
       }
     }
-  }
+    &.summary {
+      background-color: #96ca4d !important;
+      color: #fff;
+      .block-heading {
+        color: #FFF;
+      }
+      li {
+        background-color: #b3e370 !important;
+        color: #fff;
+        margin: 10px 0;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+    }
+  } // . block
   
   .require-action-list li {
     margin: 10px 0;
