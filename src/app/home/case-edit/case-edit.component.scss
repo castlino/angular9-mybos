@@ -32,7 +32,16 @@
     min-height: 884px;
 }
 
-.case-view-control {
-    margin-bottom: 5px;
-    position: relative;
+.new-case-form {
+  input {
+    font-size: 13px;
+  }
+  select {
+    font-size: 13px;
+  }
+  button {
+    &.calendar {
+        padding: 2px 8px;
+    }
+  }
 }

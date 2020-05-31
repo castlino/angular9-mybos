@@ -23,6 +23,7 @@ import { WorkOrdersComponent } from './widgets/work-orders/work-orders.component
 import { NotesComponent } from './widgets/notes/notes.component';
 import { ImportantNumbersComponent } from './widgets/important-numbers/important-numbers.component';
 import { ActivityFeedComponent } from './widgets/activity-feed/activity-feed.component';
+import { CaseEditComponent } from './case-edit/case-edit.component';
 
 const routes: Routes = [
   {
@@ -34,13 +35,14 @@ const routes: Routes = [
       { path: 'cases', component: CasesComponent },
       { path: 'case/view/:id', component: CaseViewComponent },
       { path: 'case/new', component: CaseNewComponent },
+      { path: 'case/edit/:id', component: CaseEditComponent },
       { path: 'dashboard', component: DashboardComponent }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent, CaseNewComponent, ActionItemsComponent, ManagementReportsComponent, BuildingSummaryComponent, WorkOrdersComponent, NotesComponent, ImportantNumbersComponent, ActivityFeedComponent],
+  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent, CaseNewComponent, ActionItemsComponent, ManagementReportsComponent, BuildingSummaryComponent, WorkOrdersComponent, NotesComponent, ImportantNumbersComponent, ActivityFeedComponent, CaseEditComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

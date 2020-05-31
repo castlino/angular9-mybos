@@ -1,0 +1,113 @@
+<div class="block block-panel">
+  
+  <div class="block-heading"><i class="icon icon-case"></i> <span> Edit Case</span></div>
+  
+  <div class="block-body printable">
+    <div class="row">
+      
+      <div class="col-md-8" *ngIf="newCaseForm">
+        <form [formGroup]="newCaseForm" class="new-case-form" (submit)="onUpdateCase()">
+          <fieldset>
+            
+              <legend>
+                <span mb-lang="">Case Information</span>
+                <div class="clearfix"></div>
+              </legend>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Case Number</label></div>
+                <div class="col-md-3"><input type="text" class="form-control" formControlName="case_number"></div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Type</label></div>
+                <div class="col-md-3">
+                  <select class="form-control" formControlName="type" required>
+                    <option *ngFor="let caseType of caseTypes" value="{{ caseType }}">{{ caseType }}</option>
+                  </select>
+                  <div class="mybos-alert" *ngIf="formSubmitted && f.type.errors && f.type.errors.required">required</div>
+                </div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Added</label></div>
+                <div class="col-md-3 input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" formControlName="added_date" [(ngModel)]="ngbAddedDate" ngbDatepicker #dAddedDate="ngbDatepicker" required>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="dAddedDate.toggle()" type="button">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="mybos-alert" *ngIf="formSubmitted && f.added_date.errors && f.added_date.errors.required">required</div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Due Date</label></div>
+                <div class="col-md-3 input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" formControlName="due_date" [(ngModel)]="ngbDueDate" ngbDatepicker #dDueDate="ngbDatepicker" required>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="dDueDate.toggle()" type="button">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="mybos-alert" *ngIf="formSubmitted && f.due_date.errors && f.due_date.errors.required">required</div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Priority</label></div>
+                <div class="col-md-3">
+                  <select class="form-control" formControlName="priority" required>
+                    <option *ngFor="let casePriority of casePriorityOptions" value="{{ casePriority }}">{{ casePriority }}</option>
+                  </select>
+                  <div class="mybos-alert" *ngIf="formSubmitted && f.priority.errors && f.priority.errors.required">required</div>
+                </div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Status</label></div>
+                <div class="col-md-3">
+                  <select class="form-control" formControlName="status" required>
+                    <option *ngFor="let caseStatus of caseStatusOptions" value="{{ caseStatus }}">{{ caseStatus }}</option>
+                  </select>
+                  <div class="mybos-alert" *ngIf="formSubmitted && f.status.errors && f.status.errors.required">required</div>
+                </div>
+              </div>
+                            
+          </fieldset>
+          
+          <fieldset>
+            
+              <legend>
+                <span mb-lang="">Job Information</span>
+                <div class="clearfix"></div>
+              </legend>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Subject</label></div>
+                <div class="col-md-3">
+                  <input id="subject" type="text" class="form-control" formControlName="subject" required>
+                  <div class="mybos-alert" *ngIf="formSubmitted && f.subject.errors && f.subject.errors.required">required</div>
+                </div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-md-3"><label class="bold control-label">Description</label></div>
+                <div class="col-md-3"><input id="description" type="text" class="form-control " formControlName="description"></div>
+              </div>
+              
+          </fieldset>
+          
+          <button class="mb-button red ml" type="button" (click)="onUpdateCase()">Save</button>
+        </form>
+      </div>
+      
+      <div class="col-md-4">
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>

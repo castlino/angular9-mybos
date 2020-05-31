@@ -9,7 +9,13 @@
         <form class="form-horizontal ng-pristine ng-valid" *ngIf="case">
 							<fieldset>
   								<legend>
-                    <span mb-lang="">Case Information</span>  <i class="icon icon-start grey" [ngClass]="caseStar==1 ? 'orange':'grey'" (click)="onCaseStarChanged()" ></i>
+                    <span mb-lang="">Case Information</span>  
+                    <i class="icon icon-start grey" [ngClass]="caseStar==1 ? 'orange':'grey'" (click)="onCaseStarChanged()" ></i>
+                    
+                    <div class="case-view-control pull-right">
+  										<a ng-show="hasEditPermission" class="icon icon-case-edit" routerLink="/case/edit/{{ case.id }}"></a>
+									  </div>
+                    
                     <div class="clearfix"></div>
                   </legend>
                   <div class="row">
