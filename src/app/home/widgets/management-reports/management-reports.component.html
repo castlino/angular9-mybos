@@ -1,0 +1,26 @@
+
+<div class="block report">
+  
+  <div class="block-heading" mb-lang="">Management Reports Generated</div>
+	<div class="block-body">
+    
+    <div class="app-content-loading ng-hide"></div>
+		<div class="require-action-list jquery-scroll ng-isolate-scope mb-scroller" data-scrollbar="true" tabindex="-1" style="overflow: hidden; outline: none;">
+      <div class="scroll-content" style="transform: translate3d(0px, 0px, 0px);">
+        <div ng-transclude="">
+          
+          <table class="full-width no-hover ng-scope">
+                <tbody>
+                  <tr class="ng-scope" *ngFor="let item of allItems">
+                    <td><i class="mb-ico ico-pdf-circle" ng-class="getClass(reports)"></i></td>
+                    <td><span class="time-range ng-binding"><span>Report Period</span> {{ item }}</span></td>
+                  </tr>
+                </tbody>
+          </table>
+    			
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

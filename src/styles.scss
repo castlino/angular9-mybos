@@ -62,7 +62,7 @@ body {
       min-height: 20px;
       position: relative;
     }
-    &.require{
+    &.require {
       background-color: #ff4545 !important;
       color: #fff;
       margin-bottom: 20px;
@@ -73,6 +73,30 @@ body {
         background: transparent !important;
         box-shadow: none !important;
         padding: 0 !important;
+      }
+    }
+    &.report {
+      background-color: #cecece;
+      color: #797979;
+      .block-heading {
+        color: #797979;
+      }
+      .mb-ico {
+        font-size: 24px;
+        border-radius: 12px;
+        background-color: #fff;
+        &.ico-pdf-circle:before {
+          content: "v";
+        }
+      }
+      .ico-pdf-circle {
+        color: #f84545;
+      }
+      .time-range {
+        background-color: #959595;
+        color: #fff;
+        padding: 5px;
+        border-radius: 3px;
       }
     }
   }
@@ -125,6 +149,15 @@ body {
       td {
         padding: 5px 8px 7px 10px;
         position: relative;
+      }
+    }
+    &.full-width {
+      width: 100%;
+      td {
+        font-size: 12px;
+        font-weight: lighter;
+        opacity: .9;
+        padding: 7px 3px;
       }
     }
   }
