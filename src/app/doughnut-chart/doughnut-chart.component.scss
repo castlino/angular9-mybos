@@ -4,6 +4,10 @@
     padding: 15px;
     color: #666;
     position: relative;
+
+    min-height: 365px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px -1px;
     .block-heading {
         font-size: 20px;
         color: #5faee3;

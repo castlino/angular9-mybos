@@ -1,0 +1,26 @@
+<div class="block require action-items">
+  
+  <div class="block-heading" mb-lang="">Items Requiring Action</div>
+	<div class="block-control"></div>
+  
+	<div class="block-body">
+    
+    <div class="app-content-loading ng-hide" ng-show="requireLoading"></div>
+		<div class="require-action-list jquery-scroll ng-isolate-scope mb-scroller" data-scrollbar="true" tabindex="-1" style="overflow: hidden; outline: none;">
+      <div class="scroll-content" style="transform: translate3d(0px, 0px, 0px);">
+        <div ng-transclude="">
+    			<ul class="list-unstyled ng-scope">
+            
+            <li class="ng-scope" *ngFor="let item of allItems">
+                <i class="mb-ico ico-wrench"></i>
+                <span>{{ item.label }}</span>
+                <span class="pull-right ng-binding">{{ item.count }}</span>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+  
+</div>
