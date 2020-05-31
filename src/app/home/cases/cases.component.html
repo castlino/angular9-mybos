@@ -46,7 +46,7 @@
                   <th><!-- for star --></th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let case of cases; let i = index" routerLink="/case/view/{{ case.id }}" >
+                  <tr class="tr-clickable" *ngFor="let case of cases; let i = index" routerLink="/case/view/{{ case.id }}" >
                     <td>{{case.case_number}}</td>
                     <td>{{case.added_date | date:'MM/d/y'}}</td>
                     <td>{{case.subject}}</td>
@@ -116,23 +116,23 @@
   						<tbody>
   						<tr>
   							<td><a href="javascript:void(0)" ng-click="changeFolder('current')" mb-lang="">Current Cases</a></td>
-  							<td class="text-right ng-binding">(4)</td>
+  							<td class="text-right ng-binding">({{casesStatistics.currentCase}})</td>
   						</tr>
   						<tr>
   							<td><a href="javascript:void(0)" ng-click="changeFolder('completed')" mb-lang="">Completed</a></td>
-  							<td class="text-right ng-binding">(5)</td>
+  							<td class="text-right ng-binding">({{casesStatistics.completed}})</td>
   						</tr>
               <tr>
                   <td><a href="javascript:void(0)" ng-click="changeFolder('overdue')" mb-lang="">Overdue</a></td>
-                  <td class="text-right ng-binding">(4)</td>
+                  <td class="text-right ng-binding">({{casesStatistics.overdue}})</td>
               </tr>
   						<tr>
   							<td><a href="javascript:void(0)" ng-click="changeFolder('trash')" mb-lang="">Trash</a></td>
-  							<td class="text-right ng-binding">(12)</td>
+  							<td class="text-right ng-binding">({{casesStatistics.trash}})</td>
   						</tr>
   						<tr>
   							<td><a href="javascript:void(0)" ng-click="changeFolder('starred')" mb-lang="">Starred</a></td>
-  							<td class="text-right ng-binding">(1)</td>
+  							<td class="text-right ng-binding">({{casesStatistics.starred}})</td>
   						</tr>
   						</tbody>
   					</table>

@@ -27,6 +27,7 @@ export class CasesComponent implements OnInit {
   pageCountOptions: string[];
   
   searchString: string;
+  casesStatistics: any;
 
   constructor(
     private router: Router,
@@ -42,6 +43,7 @@ export class CasesComponent implements OnInit {
     
     this.tableHeading = ['#', 'Added', 'Subject', 'Type', 'Status', 'Assigned Contractors', 'Priority'];
     this.pageCountOptions = ['2', '4', '8'];
+    
   }
   
   getCases(): void {
@@ -65,7 +67,6 @@ export class CasesComponent implements OnInit {
             console.log(caseTypeStats);
           }
     );
-    
   }
   
   getPaginatedCases(): void {
@@ -81,21 +82,8 @@ export class CasesComponent implements OnInit {
             this.countTotal = paginatedCases.total;
             this.pageCountMax = paginatedCases.maxPage;
             this.loading = false;
-          }
-    );
-  }
-  
-  getPaginatedCases2(): void {
-    this.caseService.getPaginatedCases(this.pageCount, this.pageNumber, this.searchString)
-        //.pipe( delay(1000) )  // test loader display by adding delay.
-        .subscribe(
-          paginatedCases => {
-            this.paginatedCases = paginatedCases;
-            this.cases = paginatedCases.cases;
-            this.pageStart = paginatedCases.start;
-            this.pageEnd = paginatedCases.end;
-            this.countTotal = paginatedCases.total;
-            this.pageCountMax = paginatedCases.maxPage;
+            
+            this.getCaseStatusStats();  // Call this here so it happens right after the pagination call..
           }
     );
   }
@@ -114,6 +102,8 @@ export class CasesComponent implements OnInit {
                 }else{
                   this.cases[ndx].starred = 0;
                 }
+                
+                this.getCaseStatusStats();  // Call status statistcs to update counts.
           }
     );
   }
@@ -126,12 +116,21 @@ export class CasesComponent implements OnInit {
           }
     );
   }
+  
+  getCaseStatusStats(): void {
+    this.caseService.getCaseStatusStats()
+        .subscribe(
+          caseStatusStats => {
+            console.log(caseStatusStats);
+            this.casesStatistics = caseStatusStats;
+          }
+    );
+  }
 
   public onGetStats() {
-    this.getNextCaseNumber();
+    this.getCaseStatusStats();
     // event.stopPropagation();
     // //this.getCaseTypeStats();
-    // //this.getPaginatedCases2();
     // console.log(this.cases);
     // console.log(this.cases[1]);
     // this.cases[1].type = 'lino';

@@ -31,3 +31,12 @@
 .case-folder-content {
     min-height: 884px;
 }
+
+tr {
+  &.tr-clickable {
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -177,6 +177,22 @@ export class CasesService {
       );
   }
   
+  getCaseStatusStats(): Observable<any> {
+    this.options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get<any>(`${environment.laravelApiUrl}/api/cases/get-status-stats`, this.options)
+      .pipe(
+        tap(_ => console.log('fetched case type stats...')),
+        catchError(this.handleError<any>('getCaseStatusStats', []))
+        
+      );
+  }
+  
   /**
    * Handle Http operation that failed.
    * Let the app continue.
