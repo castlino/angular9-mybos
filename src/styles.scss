@@ -44,6 +44,11 @@ body {
           background-position: -343px -232px;
         }
       }
+      &.un-check {
+        height: 15px;
+        width: 15px;
+        background-position: -139px -49px;
+      }
   }
   
   
@@ -140,6 +145,39 @@ body {
         background-repeat: no-repeat;
       }
     }
+    &.todo {
+      background-color: #f6d746;
+      color: #fff;
+      .block-heading {
+        color: #2f2f2f;
+      }
+    }
+    &.number {
+      background-color: #fcba4c;
+      color: #a38138;
+      .block-heading {
+        color: #a38138;
+      }
+      th {
+        color: #FFF !important;
+        border-bottom: 1px solid #FFF !important;
+        &.control {
+          width: 20px;
+          text-align: right;
+        }
+      }
+      td {
+        padding: 5px 8px 5px 0;
+      }
+    }
+    &.activity {
+      background-color: #5581e4;
+      color: #fff;
+      .block-heading {
+        color: #fff;
+      }
+    }
+    
   } // . block
   
   .require-action-list {
@@ -453,6 +491,15 @@ body {
     border-radius: 4px 0 0 4px;
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
+  
+  .mb-checkbox {
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    position: relative;
   }
   
 } //Body

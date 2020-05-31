@@ -1,0 +1,36 @@
+
+<div class="block number important-numbers-component">
+  
+  <div class="block-heading">Important Numbers</div>
+	<div class="block-control"></div>
+  
+	<div class="block-body">
+    <div class="app-content-loading ng-hide" ng-show="requireLoading"></div>
+    <div class="require-action-list overflow-auto body-overflow-container">
+        
+      <table class="important-number ng-scope">
+            <thead>
+              <tr>
+                <th mb-lang="">Name</th>
+                <th mb-lang="">Number</th>
+                <th class="control right">
+                    <i class="fa fa-trash-o ng-isolate-scope"></i>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of allItems">
+                <td class="ng-binding">{{ item.name }}</td>
+                <td class="ng-binding">{{ item.number }}</td>
+                <td class="control text-right">
+                    <div class="mb-checkbox ng-isolate-scope ng-valid ng-not-empty ng-dirty ng-valid-parse">
+                      <span class="icon un-check"></span>
+                    </div>
+                </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>

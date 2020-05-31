@@ -1,0 +1,24 @@
+
+<div class="block activity activity-feed-component">
+  
+  <div class="block-heading" mb-lang="">Activity Feed</div>
+  
+	<div class="block-body">
+    <div class="app-content-loading ng-hide"></div>
+    <div class="activity-list overflow-auto body-overflow-container">
+        
+      <ul class="list-unstyled">
+        <li *ngFor="let item of allItems">
+          <p class="activity-time"><strong class="ng-binding">{{ item.date }}</strong></p>
+          <ul class="list-unstyled">
+            <li class="activity-item" *ngFor="let subItem of item.activities">
+              {{ subItem.time }} - {{ subItem.activity }} - {{ subItem.user }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+        
+    </div>
+  </div>
+  
+</div>

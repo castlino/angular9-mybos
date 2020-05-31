@@ -20,6 +20,9 @@ import { ActionItemsComponent } from './widgets/action-items/action-items.compon
 import { ManagementReportsComponent } from './widgets/management-reports/management-reports.component';
 import { BuildingSummaryComponent } from './widgets/building-summary/building-summary.component';
 import { WorkOrdersComponent } from './widgets/work-orders/work-orders.component';
+import { NotesComponent } from './widgets/notes/notes.component';
+import { ImportantNumbersComponent } from './widgets/important-numbers/important-numbers.component';
+import { ActivityFeedComponent } from './widgets/activity-feed/activity-feed.component';
 
 const routes: Routes = [
   {
@@ -36,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent, CaseNewComponent, ActionItemsComponent, ManagementReportsComponent, BuildingSummaryComponent, WorkOrdersComponent],
+  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent, CaseNewComponent, ActionItemsComponent, ManagementReportsComponent, BuildingSummaryComponent, WorkOrdersComponent, NotesComponent, ImportantNumbersComponent, ActivityFeedComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

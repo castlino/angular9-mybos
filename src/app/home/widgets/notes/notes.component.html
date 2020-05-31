@@ -1,0 +1,20 @@
+
+<div class="block todo notes-component">
+  
+  <div class="block-heading" mb-lang="">Notes</div>
+	<div class="block-control"></div>
+  
+	<div class="block-body">
+    <div class="app-content-loading ng-hide" ng-show="requireLoading"></div>
+    <div class="require-action-list overflow-auto body-overflow-container">
+        
+        <div class="todo-item am-fade" *ngFor="let item of allItems">
+            <i class="fa fa-trash-o pull-right ng-isolate-scope" confirm="Are you sure you want to remove this note?" ng-click="removeNote(note)"></i>
+            <div class="todo-writer ng-binding">{{ item.label }}</div>
+            <p [innerHTML]="item.body"></p>
+        </div>
+        
+    </div>
+  </div>
+  
+</div>
