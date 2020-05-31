@@ -19,6 +19,7 @@ import { CaseNewComponent } from './case-new/case-new.component';
 import { ActionItemsComponent } from './widgets/action-items/action-items.component';
 import { ManagementReportsComponent } from './widgets/management-reports/management-reports.component';
 import { BuildingSummaryComponent } from './widgets/building-summary/building-summary.component';
+import { WorkOrdersComponent } from './widgets/work-orders/work-orders.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent, CaseNewComponent, ActionItemsComponent, ManagementReportsComponent, BuildingSummaryComponent],
+  declarations: [HomeComponent, PieChartComponent, DoughnutChartComponent, CasesComponent, CaseViewComponent, DashboardComponent, TimeDisplayComponent, CaseNewComponent, ActionItemsComponent, ManagementReportsComponent, BuildingSummaryComponent, WorkOrdersComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

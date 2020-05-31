@@ -81,13 +81,16 @@ body {
       .block-heading {
         color: #797979;
       }
-      .mb-ico {
+      .pdf-icon {
         font-size: 24px;
         border-radius: 12px;
-        background-color: #fff;
-        &.ico-pdf-circle:before {
-          content: "v";
-        }
+        background-color: none;
+        background-image: url(assets/adobelogo.png);
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
       }
       .ico-pdf-circle {
         color: #f84545;
@@ -114,13 +117,40 @@ body {
         font-size: 16px;
       }
     }
+    &.work-order {
+      background-color: #913dcb;
+      color: #fff;
+      .block-heading {
+        color: #fff;
+      }
+      .bg {
+        background-color: #b76ceb;
+        padding: 5px;
+        border-radius: 3px;
+      }
+      .pdf-icon {
+        font-size: 24px;
+        border-radius: 12px;
+        background-color: none;
+        background-image: url(assets/adobelogo.png);
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
   } // . block
   
-  .require-action-list li {
-    margin: 10px 0;
-    padding: 5px;
-    background-color: #f99393;
-  } 
+  .require-action-list {
+    height: 257px;
+    margin-top: 20px;
+    li {
+      margin: 10px 0;
+      padding: 5px;
+      background-color: #f99393;
+    } 
+  }
   
   .dashboard-page {
     .block {

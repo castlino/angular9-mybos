@@ -1,0 +1,20 @@
+<div class="block work-order">
+  
+  <div class="block-heading" mb-lang="">Latest Work Orders Sent</div>
+	<div class="block-body">
+    
+    <div class="app-content-loading ng-hide"></div>
+		<div class="require-action-list overflow-auto body-overflow-container">
+          <table class="full-width">
+                <tbody>
+                  <tr *ngFor="let item of allItems">
+                    <td><i class="pdf-icon"></i></td>
+                    <td>{{ item.label }}</td>
+                    <td><span class="bg">{{ item.title }}</span></td>
+                  </tr>
+                </tbody>
+          </table>
+    </div>
+  </div>
+  
+</div>
