@@ -129,6 +129,9 @@ body {
       overflow: hidden;
       box-shadow: 2px 2px 5px -1px;
     }
+    .body-overflow-container {
+      max-height: 300px;
+    }
   }
   
   .sort-container {
