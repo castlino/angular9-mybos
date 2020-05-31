@@ -81,6 +81,25 @@ export class CasesService {
       );
   }
   
+  setCaseStar(id: number, star: number): Observable<string> {
+    this.options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      })
+    };
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.post<any>(
+      `${environment.laravelApiUrl}/api/case/set-star`,
+      { id: id.toString(), starStatus: star.toString() },
+      this.options
+    )
+      .pipe(
+        tap(_ => console.log('set case star...')),
+        catchError(this.handleError<any>('setCaseStar', []))
+      );
+  }
+  
   createCase(data: any): Observable<any> {
     this.options = {
       headers: new HttpHeaders({

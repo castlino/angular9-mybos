@@ -16,6 +16,7 @@ export class CaseViewComponent implements OnInit {
   id: number;
   case: Case;
   caseStatus: string;
+  caseStar: number;
   caseStatusOptions: string[];
 
   constructor(
@@ -54,6 +55,7 @@ export class CaseViewComponent implements OnInit {
             this.case = caseById;
             console.log(this.case);
             this.caseStatus = this.case.status;
+            this.caseStar = this.case.starred;
           }
     );
   }
@@ -71,6 +73,23 @@ export class CaseViewComponent implements OnInit {
     );
   }
   
+  setCaseStar(): void {
+    if(this.caseStar == 1){
+      this.caseStar = 0;
+    }else{
+      this.caseStar = 1;
+    }
+    this.caseService.setCaseStar( this.id,  this.caseStar )
+        .subscribe(
+          caseStar => { 
+                console.log(caseStar);
+                if(caseStar == "1") {
+                  this.caseStar = 1;
+                }
+          }
+    );
+  }
+  
   public onCaseStatusChanged() {
     this.updatingStatus = true;
     this.updatedStatus = false;
@@ -78,6 +97,11 @@ export class CaseViewComponent implements OnInit {
   
     console.log(this.caseStatus);
     this.setCaseStatus();
+  }
+  
+  public onCaseStarChanged() {
+    console.log(this.id);
+    this.setCaseStar();
   }
 
 }

@@ -84,9 +84,53 @@ export class CasesComponent implements OnInit {
           }
     );
   }
+  
+  getPaginatedCases2(): void {
+    this.caseService.getPaginatedCases(this.pageCount, this.pageNumber, this.searchString)
+        //.pipe( delay(1000) )  // test loader display by adding delay.
+        .subscribe(
+          paginatedCases => {
+            this.paginatedCases = paginatedCases;
+            this.cases = paginatedCases.cases;
+            this.pageStart = paginatedCases.start;
+            this.pageEnd = paginatedCases.end;
+            this.countTotal = paginatedCases.total;
+            this.pageCountMax = paginatedCases.maxPage;
+          }
+    );
+  }
+  
+  setCaseStar(ndx: number): void {
+    var starStatus = 1;
+    if(this.cases[ndx].starred == 1){
+      starStatus = 0;
+    }
+    this.caseService.setCaseStar( this.cases[ndx].id,  starStatus )
+        .subscribe(
+          caseStar => { 
+                console.log(caseStar);
+                if(caseStar == "1") {
+                  this.cases[ndx].starred = 1;
+                }else{
+                  this.cases[ndx].starred = 0;
+                }
+          }
+    );
+  }
 
   public onGetStats() {
-    this.getCaseTypeStats();
+    event.stopPropagation();
+    //this.getCaseTypeStats();
+    //this.getPaginatedCases2();
+    console.log(this.cases);
+    console.log(this.cases[1]);
+    this.cases[1].type = 'lino';
+  }
+  
+  public onCaseStarChanged(ndx: number) {
+    event.stopPropagation();
+    console.log(ndx);
+    this.setCaseStar(ndx);
   }
   
   public onCountChange() {

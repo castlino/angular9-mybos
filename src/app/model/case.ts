@@ -7,6 +7,7 @@ export interface Case {
   contractors: string;
   priority: string;
   description: string;
+  starred: number;
   added_date: any;
   due_date: any;
   created_at: any;
