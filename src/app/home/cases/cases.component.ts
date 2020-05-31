@@ -117,14 +117,24 @@ export class CasesComponent implements OnInit {
           }
     );
   }
+  
+  getNextCaseNumber(): void {
+    this.caseService.getNextCaseNumber()
+        .subscribe(
+          nextCase => { 
+                console.log(nextCase);
+          }
+    );
+  }
 
   public onGetStats() {
-    event.stopPropagation();
-    //this.getCaseTypeStats();
-    //this.getPaginatedCases2();
-    console.log(this.cases);
-    console.log(this.cases[1]);
-    this.cases[1].type = 'lino';
+    this.getNextCaseNumber();
+    // event.stopPropagation();
+    // //this.getCaseTypeStats();
+    // //this.getPaginatedCases2();
+    // console.log(this.cases);
+    // console.log(this.cases[1]);
+    // this.cases[1].type = 'lino';
   }
   
   public onCaseStarChanged(ndx: number) {

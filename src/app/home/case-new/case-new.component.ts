@@ -21,6 +21,7 @@ export class CaseNewComponent implements OnInit {
   
   formSubmitted = false;
   newCaseForm: FormGroup;
+  nextCaseNumber: number;
   
   
   constructor(
@@ -34,6 +35,7 @@ export class CaseNewComponent implements OnInit {
     this.status = '';
     this.caseTypes = ['Other', 'gardening', 'Defects', 'Renovations', 'Cleaning', 'Repair & Maintenance'];
     this.casePriorityOptions = ['Low', 'Medium', 'High', 'Urgent'];
+    this.nextCaseNumber = 0;
     this.caseStatusOptions = [
       'In Progress', 
       'Completed',
@@ -47,22 +49,27 @@ export class CaseNewComponent implements OnInit {
       'Approval 1',
       'Approval 2'
     ];
+    this.getNextCaseNumber();
     
     this.newCaseForm = this.formBuilder.group({
-        case_number: '000',
+        case_number: { value:this.nextCaseNumber, disabled: true},
         subject: ['', Validators.required],
         type: ['', Validators.required],
         status: ['', Validators.required],
         contractors: '',
         priority: ['', Validators.required],
         description: '',
+        starred: 0,
         added_date: ['', Validators.required],
         due_date: ['', Validators.required],
     });
   }
   
   // convenience getter for easy access to form fields
-  get f() { return this.newCaseForm.controls; }
+  get f() { 
+    // console.log(this.newCaseForm);
+    return this.newCaseForm.controls; 
+  }
   
   createNewCase(): void {
     this.caseService.createCase( this.newCaseForm.getRawValue() )
@@ -72,6 +79,16 @@ export class CaseNewComponent implements OnInit {
             if(newCase.status == 'success'){
               this.router.navigate(['/case/view/' + newCase.id]);
             }
+          }
+    );
+  }
+  
+  getNextCaseNumber(): void {
+    this.caseService.getNextCaseNumber()
+      .subscribe(
+          nextCaseNumber => { 
+                console.log(nextCaseNumber);
+                this.nextCaseNumber = nextCaseNumber;
           }
     );
   }

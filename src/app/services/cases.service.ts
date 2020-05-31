@@ -59,6 +59,20 @@ export class CasesService {
       );
   }
   
+  getNextCaseNumber(): Observable<number> {
+    this.options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get<number>(`${environment.laravelApiUrl}/api/case/get-next-case-number`, this.options)
+      .pipe(
+        tap(_ => console.log('fetched next case number...')),
+        catchError(this.handleError<any>('getNextCaseNumber', []))
+      );
+  }
+  
   setCaseStatus(id: number, status: string): Observable<string> {
     this.options = {
       headers: new HttpHeaders({
