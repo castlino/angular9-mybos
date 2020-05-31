@@ -30,6 +30,7 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [ AuthGuardService ],
     children: [
+      { path: '', component: DashboardComponent },
       { path: 'cases', component: CasesComponent },
       { path: 'case/view/:id', component: CaseViewComponent },
       { path: 'case/new', component: CaseNewComponent },
