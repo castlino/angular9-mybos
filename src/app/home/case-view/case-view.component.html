@@ -62,7 +62,7 @@
       										</div>
       										<div class="complete-positions" *ngIf="case.status == 'Completed'">
       											<label class="">Completed Date:</label>
-      											<p class="color-grey ng-binding">{{ case.added_date }}</p>
+      											<p class="color-grey ng-binding">{{ currentDate | date:'yyyy/M/d' }}</p>
       										</div>
       									</div>
       								</div>

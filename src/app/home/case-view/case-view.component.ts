@@ -18,6 +18,8 @@ export class CaseViewComponent implements OnInit {
   caseStatus: string;
   caseStar: number;
   caseStatusOptions: string[];
+  
+  currentDate: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +43,7 @@ export class CaseViewComponent implements OnInit {
       'Approval 1',
       'Approval 2'
     ];
-    
+    this.currentDate = new Date();
   }
   
   getCase(): void {
