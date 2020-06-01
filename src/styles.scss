@@ -52,6 +52,11 @@ body {
         width: 15px;
         background-position: -139px -49px;
       }
+      &.check {
+        height: 15px;
+        width: 15px;
+        background-position: -154px -49px;
+      }
       &.icon-case-edit {
         width: 36px;
         height: 34px;
@@ -272,6 +277,9 @@ body {
         .input-group-addon, .input-group-text {
           border: 1px solid #b6b6b6;
         }
+      }
+      .table-section {
+        font-size: 18px;
       }
     }
     .table-body {

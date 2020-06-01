@@ -17,6 +17,31 @@
                 </button>
               </div>
               
+              <div class="table-section pull-left">
+                <div class="dropdown">
+                  <button class="btn-lino-mybos btn btn-mybos btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ currentCaseStatusfilter }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" *ngFor="let caseStatus of caseStatusfilters" (click)="onChangeStatusFilter(caseStatus)">{{ caseStatus }}</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="table-section pull-left">
+                <div class="btn-group btn-group-sm" *ngIf="!isAllChkbxClear">
+                    <!-- <button uib-tooltip="Send to trash" tooltip-append-to-body="true" type="button" class="btn btn-mybos ng-binding ng-scope ng-hide">
+                      <i class="mb-ico ico-trash"></i>
+                    </button> -->
+                    <button type="button" class="btn btn-outline-secondary">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary">
+                      Mark as complete
+                    </button>
+                </div>
+              </div>
+              
               <div class="table-search pull-right">
                 <div class="input-group">
                   <input type="text" (keyup.enter)="onSearchCases()" [(ngModel)]="searchString" class="form-control mybos-form-control ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" placeholder="Search">
@@ -36,6 +61,7 @@
               </div>
               <table *ngIf="!loading" class="" style="">
                 <thead>
+                  <th><!-- for star --></th>
                   <th *ngFor="let heading of tableHeading" >{{ heading }} 
                         <div class="col-sort" ng-show="column.sortable">
                             <i class="fa fa-caret-up" ng-class="sortActive(index,'asc')"></i>
@@ -47,6 +73,9 @@
                 </thead>
                 <tbody>
                   <tr class="tr-clickable" *ngFor="let case of cases; let i = index" routerLink="/case/view/{{ case.id }}" >
+                    <td>
+                      <span class="icon un-check" [ngClass]="chkbxJar[i].checked==1 ? 'check' : 'un-check'" (click)="onChkbxTicked(i)"></span>
+                    </td>
                     <td>{{case.case_number}}</td>
                     <td>{{case.added_date | date:'MM/d/y'}}</td>
                     <td>{{case.subject}}</td>

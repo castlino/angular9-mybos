@@ -29,6 +29,12 @@ export class CasesComponent implements OnInit {
   searchString: string;
   casesStatistics: any;
 
+  chkbxJar = [];
+  isAllChkbxClear: boolean;
+  
+  caseStatusfilters: string[];
+  currentCaseStatusfilter: string;
+
   constructor(
     private router: Router,
     private caseService: CasesService
@@ -39,11 +45,15 @@ export class CasesComponent implements OnInit {
     this.pageCount = 2;
     this.pageNumber = 1;
     this.searchString = '';
-    this.getPaginatedCases();
+    
     
     this.tableHeading = ['#', 'Added', 'Subject', 'Type', 'Status', 'Assigned Contractors', 'Priority'];
+    this.caseStatusfilters = ['Current Cases', 'Completed', 'Overdue', 'Trash', 'Starred'];
+    this.currentCaseStatusfilter = 'Current Cases';
     this.pageCountOptions = ['2', '4', '8'];
+    this.isAllChkbxClear = true;
     
+    this.getPaginatedCases();
   }
   
   getCases(): void {
@@ -71,7 +81,7 @@ export class CasesComponent implements OnInit {
   
   getPaginatedCases(): void {
     this.loading = true;
-    this.caseService.getPaginatedCases(this.pageCount, this.pageNumber, this.searchString)
+    this.caseService.getPaginatedCases(this.pageCount, this.pageNumber, this.searchString, this.currentCaseStatusfilter)
         //.pipe( delay(1000) )  // test loader display by adding delay.
         .subscribe(
           paginatedCases => {
@@ -82,6 +92,11 @@ export class CasesComponent implements OnInit {
             this.countTotal = paginatedCases.total;
             this.pageCountMax = paginatedCases.maxPage;
             this.loading = false;
+            
+            this.cases.forEach((value, index) => {
+              this.chkbxJar.push({ id: value.case_number, checked: 0 });
+            });
+            console.log(this.chkbxJar);
             
             this.getCaseStatusStats();  // Call this here so it happens right after the pagination call..
           }
@@ -156,6 +171,30 @@ export class CasesComponent implements OnInit {
     console.log('on search...' + this.searchString);
     this.pageNumber = 1;
     this.getPaginatedCases();
+  }
+  
+  public onChangeStatusFilter(selectedStatusFilter: string) {
+    this.pageNumber = 1;
+    this.currentCaseStatusfilter = selectedStatusFilter;
+    this.getPaginatedCases();
+  }
+  
+  public onChkbxTicked(ndx: number) {
+    event.stopPropagation();
+    console.log(this.chkbxJar);
+    if(this.chkbxJar[ndx].checked == 1){
+      this.chkbxJar[ndx].checked = 0;
+    }else{
+      this.chkbxJar[ndx].checked = 1;
+    }
+    
+    //check if all is clear
+    this.isAllChkbxClear = true;
+    this.chkbxJar.forEach((value, index) => {
+      if(value.checked){
+        this.isAllChkbxClear = false;
+      }
+    });
   }
   
   numberToCollection(n: number): any[] {
