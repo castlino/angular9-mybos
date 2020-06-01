@@ -33,10 +33,10 @@
                     <!-- <button uib-tooltip="Send to trash" tooltip-append-to-body="true" type="button" class="btn btn-mybos ng-binding ng-scope ng-hide">
                       <i class="mb-ico ico-trash"></i>
                     </button> -->
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" class="btn btn-outline-secondary" (click)="onUpdateStatusMulti('Deleted')">
                       <i class="fa fa-trash"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" class="btn btn-outline-secondary" (click)="onUpdateStatusMulti('Completed')">
                       Mark as complete
                     </button>
                 </div>

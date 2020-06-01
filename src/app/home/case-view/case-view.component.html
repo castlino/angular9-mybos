@@ -60,9 +60,9 @@
                               <option *ngFor="let caseStatus of caseStatusOptions" value="{{ caseStatus }}">{{ caseStatus }}</option>
                             </select>
       										</div>
-      										<div class="complete-positions ng-hide" ng-show="caseData.status == 2">
-      											<label class="" mb-lang="">Date Completed:</label>
-      											<p class="color-grey ng-binding">--date here--</p>
+      										<div class="complete-positions" *ngIf="case.status == 'Completed'">
+      											<label class="">Completed Date:</label>
+      											<p class="color-grey ng-binding">{{ case.added_date }}</p>
       										</div>
       									</div>
       								</div>

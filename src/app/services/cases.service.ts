@@ -95,6 +95,25 @@ export class CasesService {
       );
   }
   
+  setCaseStatusMulti(ids: number[], status: string): Observable<string> {
+    this.options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      })
+    };
+    this.options.headers = this.options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.post<any>(
+      `${environment.laravelApiUrl}/api/case/set-status-multi`,
+      { ids: ids, status: status },
+      this.options
+    )
+      .pipe(
+        tap(_ => console.log('set case status multi...')),
+        catchError(this.handleError<any>('setCaseStatusMulti', []))
+      );
+  }
+  
   setCaseStar(id: number, star: number): Observable<string> {
     this.options = {
       headers: new HttpHeaders({

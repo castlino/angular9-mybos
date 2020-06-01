@@ -30,6 +30,7 @@ export class CasesComponent implements OnInit {
   casesStatistics: any;
 
   chkbxJar = [];
+  selectedIds = [];
   isAllChkbxClear: boolean;
   
   caseStatusfilters: string[];
@@ -141,6 +142,18 @@ export class CasesComponent implements OnInit {
           }
     );
   }
+  
+  setCaseStatusMulti(status: string): void {
+    console.log(this.selectedIds);
+    this.caseService.setCaseStatusMulti( this.selectedIds,  status )
+        .subscribe(
+          caseStatusMulti => { 
+                console.log(caseStatusMulti);
+                this.chkbxJar = [];
+                this.getPaginatedCases();  // Call paginate to update all.
+          }
+    );
+  }
 
   public onGetStats() {
     this.getCaseStatusStats();
@@ -190,11 +203,19 @@ export class CasesComponent implements OnInit {
     
     //check if all is clear
     this.isAllChkbxClear = true;
+    this.selectedIds = [];
     this.chkbxJar.forEach((value, index) => {
       if(value.checked){
         this.isAllChkbxClear = false;
+        this.selectedIds.push(value.id);
       }
     });
+    
+    console.log(this.selectedIds);
+  }
+  
+  public onUpdateStatusMulti(status: string){
+    this.setCaseStatusMulti(status);
   }
   
   numberToCollection(n: number): any[] {

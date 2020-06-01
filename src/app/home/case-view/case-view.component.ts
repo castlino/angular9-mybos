@@ -68,6 +68,7 @@ export class CaseViewComponent implements OnInit {
             this.updatingStatus = false;
             if(caseStatusUpdateResult == 'success'){
                 this.updatedStatus = true;
+                this.case.status = this.caseStatus;
             }
           }
     );
